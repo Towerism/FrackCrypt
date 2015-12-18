@@ -1,22 +1,17 @@
 * FrackCrypt
 Encryption Back Ends
 ** Requirements
-- Biicode
-- CMake 3.x
+- CMake 3.0+
 ** Instructions
-First you need to initialize biicode with:
+*** Building
+Generate the Makefiles, and then run Make:
 #+BEGIN_SRC
-$ bii init -L
+$ mkdir -p build && cd build
+$ cmake ..
+$ make
 #+END_SRC
-Then the following commands can get you started:
+To run tests, use the ~FRACKCRYPT_TEST~ option when configuring, i.e.:
 #+BEGIN_SRC
-$ bii build
-$ bii test
+$ cmake -DFRACKCRYPT_TEST=ON ..
+$ make run-tests
 #+END_SRC
-If you introduce new dependencies, you need to let biicode look for them with:
-#+BEGIN_SRC
-$ bii find
-#+END_SRC
-See the Biicode website on how to properly include external dependencies, as well
-as the dependencies available on Biicode.
-
