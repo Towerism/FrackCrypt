@@ -1,4 +1,4 @@
-#include "google/gtest/include/gtest/gtest.h"
+#include "gtest/gtest.h"
 
 int sum(int a, int b) {
   return a + b;
