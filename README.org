@@ -1,0 +1,22 @@
+* FrackCrypt
+Encryption Back Ends
+** Requirements
+- Biicode
+- CMake 3.x
+** Instructions
+First you need to initialize biicode with:
+#+BEGIN_SRC
+$ bii init -L
+#+END_SRC
+Then the following commands can get you started:
+#+BEGIN_SRC
+$ bii build
+$ bii test
+#+END_SRC
+If you introduce new dependencies, you need to let biicode look for them with:
+#+BEGIN_SRC
+$ bii find
+#+END_SRC
+See the Biicode website on how to properly include external dependencies, as well
+as the dependencies available on Biicode.
+

@@ -1,2 +1,0 @@
-# FrackCrypt
-Encryption Back Ends
