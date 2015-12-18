@@ -1,5 +1,8 @@
+INCLUDE(Towerism/CMake/add_cxx_flags)
 
 ADD_BII_TARGETS()
+
+ADD_CXX_FLAGS("-std=c++14")
 
 ###############################################################################
 #      HELP                                                                   #
