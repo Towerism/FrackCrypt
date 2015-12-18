@@ -28,5 +28,4 @@
 *.app
 
 # FrackCrypt
-/bin
-/bii
+/build
