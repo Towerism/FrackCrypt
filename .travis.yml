@@ -8,6 +8,9 @@ addons:
       - cmake
       - gcc-5
       - g++-5
-script:
-  - export CXX=g++-5
-  - cmake -DFRACKCRYPT_TEST=ON . && make run-tests
+
+env:
+  - TEST_SUITE=unit
+  - TEST_SUITE=integration
+
+script: ci/script.sh
