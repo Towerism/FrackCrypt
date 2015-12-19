@@ -3,12 +3,22 @@ include(testing)
 
 include_directories(${GTEST_INCLUDE_DIR})
 
-add_subdirectory(unit)
+if (${FRACKCRYPT_TEST_UNIT})
+  add_subdirectory(unit)
 
-get_test_sources(TEST_SRCS)
-add_executable(frackcrypt_test_suite ${TEST_SRCS})
+  get_test_sources(unit UNIT_SRCS)
+  add_executable(frackcrypt_test_unit ${UNIT_SRCS})
 
-set(TEST_SUITE_LIBS ${GTEST_LIBRARY} ${GTEST_MAIN} pthread)
-target_link_libraries(frackcrypt_test_suite ${TEST_SUITE_LIBS})
+  set(TEST_UNIT_LIBS ${GTEST_LIBRARY} ${GTEST_MAIN} pthread)
+  target_link_libraries(frackcrypt_test_unit ${TEST_UNIT_LIBS})
+endif()
 
-run_test(frackcrypt_test_suite)
+if (${FRACKCRYPT_TEST_INTEGRATION})
+  add_subdirectory(integration)
+
+  get_test_sources(integration INTEGRATION_SRCS)
+  add_executable(frackcrypt_test_integration ${INTEGRATION_SRCS})
+
+  set(TEST_INTEGRATION_LIBS ${GTEST_LIBRARY} ${GTEST_MAIN} pthread)
+  target_link_libraries(frackcrypt_test_integration ${TEST_INTEGRATION_LIBS})
+endif()
