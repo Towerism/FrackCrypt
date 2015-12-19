@@ -8,6 +8,10 @@ addons:
       - cmake
       - gcc-5
       - g++-5
+
+env:
+  - TEST_CONFIG="-DFRACKCRYPT_TEST_UNIT=ON -DFRACKCRYPT_TEST_INTEGRATION=OFF"
+  - TEST_CONFIG="-DFRACKCRYPT_TEST_UNIT=OFF -DFRACKCRYPT_TEST_INTEGRATION=ON"
 script:
   - export CXX=g++-5
-  - cmake -DFRACKCRYPT_TEST=ON . && make run-tests
+  - cmake -DFRACKCRYPT_TEST=ON $(TEST_CONFIG) . && make && ctest -VV
