@@ -11,6 +11,10 @@ public:
 
   std::string operator()(std::string to_encode);
 
+private:
+
+  static const std::string base64_chars;
+
 };
 
 }
