@@ -14,6 +14,7 @@ public:
   std::string operator()(std::string to_encode);
 
 private:
+  void reset();
   void chunkify(std::string to_encode);
   void encode_chunks();
   void encode_chunk(std::string chunk);

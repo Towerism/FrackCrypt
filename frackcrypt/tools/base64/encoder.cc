@@ -12,10 +12,16 @@ const std::string Encoder::base64_chars =
 Encoder::Encoder() {}
 
 std::string Encoder::operator()(std::string to_encode) {
+  reset();
   chunkify(to_encode);
   encode_chunks();
   add_padding();
   return base64.str();
+}
+
+void Encoder::reset() {
+  base64.str("");
+  chunks.clear();
 }
 
 void Encoder::chunkify(std::string to_encode) {
