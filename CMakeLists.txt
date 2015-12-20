@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
 
 option(FRACKCRYPT_TEST "Enable testing for FrackCrypt" OFF)
 option(FRACKCRYPT_TEST_UNIT "Enable unit testing (only if testing is enabled)" ON)
