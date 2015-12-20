@@ -1,54 +1,75 @@
 #include "encoder.hh"
 
-#include <cstdint>
-#include <sstream>
-#include <string>
-#include <vector>
+#include <iostream>
 
 namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
-const std::string Encoder::base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const std::string Encoder::base64_chars =
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-Encoder::Encoder() {
-
-}
+Encoder::Encoder() {}
 
 std::string Encoder::operator()(std::string to_encode) {
-  std::ostringstream base64;
-  std::string padding;
-  std::vector<std::string> chunks;
-  uint8_t chunk1, chunk2, chunk3, chunk4;
-
-  for (uint64_t i = 0; i < to_encode.length(); i += 3) {
-    chunks.push_back(std::string(to_encode, i, 3));
-  }
-
-  for (uint64_t i = 0; i < chunks.size(); ++i) {
-    const std::string& working_chunk = chunks[i];
-    if (chunks[i].length() == 3) {
-      chunk1 = working_chunk[0] >> 2;
-      chunk2 = ((working_chunk[0] & 0x3) << 4) | (working_chunk[1] >> 4);
-      chunk3 = ((working_chunk[1] & 0xF) << 2) | (working_chunk[2] >> 6);
-      chunk4 = working_chunk[2] & 0x3F;
-      base64 << (char)base64_chars[chunk1] << (char)base64_chars[chunk2] << (char)base64_chars[chunk3] << (char)base64_chars[chunk4];
-    } else if (chunks[i].length() == 2) {
-      chunk1 = working_chunk[0] >> 2;
-      chunk2 = ((working_chunk[0] & 0x3) << 4) | (working_chunk[1] >> 4);
-      chunk3 = (working_chunk[1] & 0xF) << 2;
-      base64 << (char)base64_chars[chunk1] << (char)base64_chars[chunk2] << (char)base64_chars[chunk3];
-      padding = "=";
-    } else {
-      chunk1 = to_encode[0] >> 2;
-      chunk2 = (to_encode[0] & 0x3) << 4;
-      base64 << (char)base64_chars[chunk1] << (char)base64_chars[chunk2];
-      padding = "==";
-    }
-  }
-
-  base64 << padding;
+  chunkify(to_encode);
+  encode_chunks();
+  add_padding();
   return base64.str();
+}
+
+void Encoder::chunkify(std::string to_encode) {
+  for (uint64_t i = 0; i < to_encode.length(); i += 3)
+    chunks.push_back(std::string(to_encode, i, 3));
+}
+
+void Encoder::encode_chunks() {
+  for (uint64_t i = 0; i < chunks.size(); ++i)
+    encode_chunk(chunks[i]);
+}
+
+void Encoder::encode_chunk(std::string chunk) {
+  working_chunk = chunk;
+  encode_bytes();
+  append_codes();
+}
+
+void Encoder::encode_bytes() {
+  encode_first_byte();
+  if (working_chunk.length() > 1)
+    encode_second_byte();
+  if (working_chunk.length() > 2)
+    encode_third_byte();
+}
+
+void Encoder::encode_first_byte() {
+  code1 = working_chunk[0] >> 2;
+  code2 = (working_chunk[0] & 0x3) << 4;
+}
+
+void Encoder::encode_second_byte() {
+  code2 |= (working_chunk[1] >> 4);
+  code3 = (working_chunk[1] & 0xF) << 2;
+}
+
+void Encoder::encode_third_byte() {
+  code3 |= working_chunk[2] >> 6;
+  code4 = working_chunk[2] & 0x3F;
+}
+
+void Encoder::append_codes() {
+  base64 << base64_chars[code1] << base64_chars[code2];
+  if (working_chunk.length() > 1)
+    base64 << base64_chars[code3];
+  if (working_chunk.length() > 2)
+    base64 << base64_chars[code4];
+}
+
+void Encoder::add_padding() {
+  std::string last_chunk = chunks.back();
+  size_t padding_amount = 3 - last_chunk.length();
+  std::string padding(padding_amount, '=');
+  base64 << padding;
 }
 
 }
