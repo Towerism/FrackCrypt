@@ -10,6 +10,8 @@ set(CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS}")
 
 include_directories(.)
 
+add_subdirectory(frackcrypt)
+
 if (${FRACKCRYPT_TEST})
   enable_testing()
   add_subdirectory(test)
