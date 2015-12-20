@@ -1,7 +1,7 @@
 * FrackCrypt [[http://travis-ci.org/Towerism/FrackCrypt][https://travis-ci.org/Towerism/FrackCrypt.svg]]
 Encryption Back Ends
 ** Requirements
-- CMake 2.8+
+- CMake 3.0.2+
 ** Instructions
 *** Building
 Generate the Makefiles, and then run Make:
