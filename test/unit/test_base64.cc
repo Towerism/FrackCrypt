@@ -25,3 +25,11 @@ TEST_F(Base64, EncodeThreeBytes) {
 
   EXPECT_EQ("YWJj", base64);
 }
+
+TEST_F(Base64, EncodeTwice) {
+  std::string first_encoding = encode("I am a banana.");
+  std::string second_encoding = encode("Well, you're not a banana.");
+
+  EXPECT_EQ("SSBhbSBhIGJhbmFuYS4=", first_encoding);
+  EXPECT_EQ("V2VsbCwgeW91J3JlIG5vdCBhIGJhbmFuYS4=", second_encoding);
+}
