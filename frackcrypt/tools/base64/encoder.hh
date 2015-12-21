@@ -3,7 +3,6 @@
 
 #include "agent.hh"
 
-#include <cstdint>
 #include <string>
 
 namespace FrackCrypt {
