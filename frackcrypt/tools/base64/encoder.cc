@@ -15,7 +15,7 @@ std::string Encoder::operator()(std::string to_encode) {
 }
 
 void Encoder::encode_chunks() {
-  for (uint64_t i = 0; i < chunks.size(); ++i)
+  for (size_t i = 0; i < chunks.size(); ++i)
     encode_chunk(chunks[i]);
 }
 

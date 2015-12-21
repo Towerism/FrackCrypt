@@ -1,7 +1,5 @@
 #include "decoder.hh"
 
-#include <cstdint>
-
 namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
@@ -11,7 +9,7 @@ Decoder::Decoder() {
 }
 
 void Decoder::fill_base64_index_hash() {
-  for (unsigned i = 0; i < 64; ++i)
+  for (size_t i = 0; i < 64; ++i)
     base64_index_hash.insert({base64_chars[i], i});
 }
 
@@ -23,7 +21,7 @@ std::string Decoder::operator()(std::string to_decode) {
 }
 
 void Decoder::decode_chunks() {
-  for (uint64_t i = 0; i < chunks.size(); ++i)
+  for (size_t i = 0; i < chunks.size(); ++i)
     decode_chunk(chunks[i]);
 }
 
