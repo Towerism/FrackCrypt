@@ -14,7 +14,7 @@ class Encoder : protected Agent {
 public:
   Encoder();
 
-  virtual std::string operator()(std::string to_encode);
+  virtual std::string operator()(std::string to_encode) override;
 
 private:
   void encode_chunks();

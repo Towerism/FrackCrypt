@@ -14,7 +14,7 @@ class Decoder : protected Agent {
 public:
   Decoder();
 
-  virtual std::string operator()(std::string to_decode);
+  virtual std::string operator()(std::string to_decode) override;
 
 private:
   void fill_base64_index_hash();
