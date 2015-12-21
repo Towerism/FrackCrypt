@@ -4,27 +4,14 @@ namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
-const std::string Encoder::base64_chars =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
 Encoder::Encoder() {}
 
 std::string Encoder::operator()(std::string to_encode) {
   reset();
-  chunkify(to_encode);
+  chunkify(to_encode, 3);
   encode_chunks();
   add_padding();
-  return base64.str();
-}
-
-void Encoder::reset() {
-  base64.str("");
-  chunks.clear();
-}
-
-void Encoder::chunkify(std::string to_encode) {
-  for (uint64_t i = 0; i < to_encode.length(); i += 3)
-    chunks.push_back(std::string(to_encode, i, 3));
+  return output.str();
 }
 
 void Encoder::encode_chunks() {
@@ -62,18 +49,18 @@ void Encoder::encode_third_byte() {
 }
 
 void Encoder::append_codes() {
-  base64 << base64_chars[code1] << base64_chars[code2];
+  output << base64_chars[code1] << base64_chars[code2];
   if (working_chunk.length() > 1)
-    base64 << base64_chars[code3];
+    output << base64_chars[code3];
   if (working_chunk.length() > 2)
-    base64 << base64_chars[code4];
+    output << base64_chars[code4];
 }
 
 void Encoder::add_padding() {
   std::string last_chunk = chunks.back();
   size_t padding_amount = 3 - last_chunk.length();
   std::string padding(padding_amount, '=');
-  base64 << padding;
+  output << padding;
 }
 
 }
