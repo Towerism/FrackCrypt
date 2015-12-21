@@ -1,7 +1,5 @@
 #include "encoder.hh"
 
-#include <iostream>
-
 namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
