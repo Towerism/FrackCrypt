@@ -9,7 +9,7 @@ if (${FRACKCRYPT_TEST_UNIT})
   get_test_sources(unit UNIT_SRCS)
   add_executable(frackcrypt_test_unit ${UNIT_SRCS})
 
-  set(LIBS_TO_TEST base64)
+  set(LIBS_TO_TEST base64 mpz)
   set(TEST_UNIT_LIBS ${LIBS_TO_TEST} ${GTEST_LIBRARY} ${GTEST_MAIN} pthread)
   target_link_libraries(frackcrypt_test_unit ${TEST_UNIT_LIBS})
 endif()
