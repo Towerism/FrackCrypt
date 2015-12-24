@@ -9,6 +9,7 @@ addons:
       - cmake
       - gcc-5
       - g++-5
+      - libgmp-dev
 
 env:
   - TEST_SUITE=unit
