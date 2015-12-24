@@ -1,5 +1,4 @@
 add_custom_target(run-tests)
-file(WRITE ${CMAKE_BINARY_DIR}/test_sources "")
 
 macro(add_test_sources test_suite)
   foreach(src ${ARGN})
