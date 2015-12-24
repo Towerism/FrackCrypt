@@ -2,6 +2,7 @@
 Encryption Back Ends
 ** Requirements
 - CMake 3.0.2+
+- GNU Multiple Precision Library
 ** Instructions
 *** Building
 Generate the Makefiles, and then run Make:
