@@ -2,6 +2,7 @@ add_library(tools INTERFACE)
 
 add_subdirectory(base64)
 add_subdirectory(mpz)
+add_subdirectory(conversion)
 
-set(TOOLS_LIBS base64)
+set(TOOLS_LIBS base64 mpz conversion)
 target_link_libraries(tools INTERFACE ${TOOLS_LIBS})

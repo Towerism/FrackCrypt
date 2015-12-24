@@ -1,7 +1,6 @@
 #include <frackcrypt/tools/mpz/exporter.hh>
 #include <frackcrypt/tools/mpz/importer.hh>
 
-#include <iostream>
 #include <gtest/gtest.h>
 
 using namespace FrackCrypt::Tools::MPZ;
