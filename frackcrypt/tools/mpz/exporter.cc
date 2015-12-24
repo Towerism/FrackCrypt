@@ -1,10 +1,10 @@
 #include "exporter.hh"
 
-#include <cstdlib>
-
 namespace FrackCrypt {
 namespace Tools {
 namespace MPZ {
+
+#include <cstdlib>
 
 Exporter::Exporter() { }
 

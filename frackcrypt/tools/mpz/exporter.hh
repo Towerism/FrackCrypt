@@ -1,6 +1,7 @@
 #ifndef TOOLS_MPZ_EXPORTER_H
 #define TOOLS_MPZ_EXPORTER_H
 
+#include <cstddef>
 #include <gmp.h>
 #include <string>
 
