@@ -41,16 +41,16 @@ void Decoder::recover_bytes() {
 
 void Decoder::recover_first_byte() {
   byte1 = base64_index_hash[working_chunk[0]] << 2;
-  byte1 |= (base64_index_hash[working_chunk[1]] >> 4) & 0x3;
+  byte1 |= base64_index_hash[working_chunk[1]] >> 4;
 }
 
 void Decoder::recover_second_byte() {
-  byte2 = (base64_index_hash[working_chunk[1]] & 0xF) << 4;
-  byte2 |= (base64_index_hash[working_chunk[2]] >> 2) & 0xF;
+  byte2 = base64_index_hash[working_chunk[1]] << 4;
+  byte2 |= base64_index_hash[working_chunk[2]] >> 2;
 }
 
 void Decoder::recover_third_byte() {
-  byte3 = (base64_index_hash[working_chunk[2]] & 0x3) << 6;
+  byte3 = base64_index_hash[working_chunk[2]] << 6;
   byte3 |= base64_index_hash[working_chunk[3]];
 }
 
