@@ -21,39 +21,28 @@ void Encoder::encode_chunks() {
 
 void Encoder::encode_chunk(std::string chunk) {
   working_chunk = chunk;
-  encode_bytes();
-  append_codes();
+  calculate_and_append_codes();
 }
 
-void Encoder::encode_bytes() {
-  encode_first_byte();
-  if (working_chunk.length() > 1)
-    encode_second_byte();
-  if (working_chunk.length() > 2)
-    encode_third_byte();
+void Encoder::calculate_and_append_codes() {
+  for (size_t i = 0; i < codes.size(); ++i)
+    if (working_chunk.length() > i - 1 || i < 2 )
+      calculate_and_append_code(i);
 }
 
-void Encoder::encode_first_byte() {
-  code1 = working_chunk[0] >> 2;
-  code2 = (working_chunk[0] & 0x3) << 4;
+void Encoder::calculate_and_append_code(size_t i) {
+  calculate_code(i);
+  append_code(i);
 }
 
-void Encoder::encode_second_byte() {
-  code2 |= (working_chunk[1] >> 4);
-  code3 = (working_chunk[1] & 0xF) << 2;
+void Encoder::calculate_code(size_t i) {
+  codes[i] = working_chunk[high_indeces[i]] << (8 - shifters[i]);
+  codes[i] |= working_chunk[low_indeces[i]] >> shifters[i];
+  codes[i] &= 0x3F;
 }
 
-void Encoder::encode_third_byte() {
-  code3 |= working_chunk[2] >> 6;
-  code4 = working_chunk[2] & 0x3F;
-}
-
-void Encoder::append_codes() {
-  output << base64_chars[code1] << base64_chars[code2];
-  if (working_chunk.length() > 1)
-    output << base64_chars[code3];
-  if (working_chunk.length() > 2)
-    output << base64_chars[code4];
+void Encoder::append_code(size_t i) {
+  output << base64_chars[codes[i]];
 }
 
 void Encoder::add_padding() {

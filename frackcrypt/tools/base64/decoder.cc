@@ -28,38 +28,26 @@ void Decoder::decode_chunks() {
 void Decoder::decode_chunk(std::string chunk) {
   working_chunk = chunk;
   recover_bytes();
-  append_bytes();
 }
 
 void Decoder::recover_bytes() {
-  recover_first_byte();
-  if (working_chunk[2] != '=')
-    recover_second_byte();
-  if (working_chunk[3] != '=')
-    recover_third_byte();
+  for (size_t i = 0; i < bytes.size(); ++i)
+    if (working_chunk[i + 1] != '=')
+      recover_and_append_byte(i);
 }
 
-void Decoder::recover_first_byte() {
-  byte1 = base64_index_hash[working_chunk[0]] << 2;
-  byte1 |= base64_index_hash[working_chunk[1]] >> 4;
+void Decoder::recover_and_append_byte(size_t i) {
+  recover_byte(i);
+  append_byte(i);
 }
 
-void Decoder::recover_second_byte() {
-  byte2 = base64_index_hash[working_chunk[1]] << 4;
-  byte2 |= base64_index_hash[working_chunk[2]] >> 2;
+void Decoder::recover_byte(size_t i) {
+  bytes[i] = base64_index_hash[working_chunk[i]] << shifters[i];
+  bytes[i] |= base64_index_hash[working_chunk[i + 1]] >> (6 - shifters[i]);
 }
 
-void Decoder::recover_third_byte() {
-  byte3 = base64_index_hash[working_chunk[2]] << 6;
-  byte3 |= base64_index_hash[working_chunk[3]];
-}
-
-void Decoder::append_bytes() {
-  output << byte1;
-  if (working_chunk[2] != '=')
-    output << byte2;
-  if (working_chunk[3] != '=')
-    output << byte3;
+void Decoder::append_byte(size_t i) {
+  output << bytes[i];
 }
 
 }

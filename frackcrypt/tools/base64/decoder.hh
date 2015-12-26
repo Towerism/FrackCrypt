@@ -3,6 +3,7 @@
 
 #include "agent.hh"
 
+#include <array>
 #include <string>
 #include <unordered_map>
 
@@ -21,13 +22,13 @@ private:
   void decode_chunks();
   void decode_chunk(std::string chunk);
   void recover_bytes();
-  void recover_first_byte();
-  void recover_second_byte();
-  void recover_third_byte();
-  void append_bytes();
+  void recover_and_append_byte(size_t i);
+  void recover_byte(size_t i);
+  void append_byte(size_t i);
 
   std::unordered_map<char, uint8_t> base64_index_hash;
-  char byte1, byte2, byte3;
+  std::array<char, 3> bytes;
+  const uint8_t shifters[3] = { 2, 4, 6 };
 };
 
 }
