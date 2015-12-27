@@ -1,4 +1,4 @@
-* FrackCrypt [[http://travis-ci.org/Towerism/FrackCrypt][https://travis-ci.org/Towerism/FrackCrypt.svg]]
+* FrackCrypt [[http://travis-ci.org/Towerism/FrackCrypt][https://travis-ci.org/Towerism/FrackCrypt.svg]] [[https://coveralls.io/github/Towerism/FrackCrypt?branch=develop][https://coveralls.io/repos/Towerism/FrackCrypt/badge.svg?branch=develop&service=github]]
 Encryption Back Ends
 ** Requirements
 - CMake 3.0.2+
