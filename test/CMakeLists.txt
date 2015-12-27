@@ -21,3 +21,13 @@ if (${FRACKCRYPT_TEST_INTEGRATION})
   set(TEST_INTEGRATION_LIBS ${TEST_LIBS})
   target_link_libraries(frackcrypt_test_integration ${TEST_INTEGRATION_LIBS})
 endif()
+
+if (FRACKCRYPT_COVERAGE AND NOT WIN32 AND NOT APPLE)
+  include(code_coverage)
+  setup_target_for_coverage(
+    coverage
+    ctest
+    coverage
+    "-VV"
+  )
+endif()

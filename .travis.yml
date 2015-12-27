@@ -14,8 +14,17 @@ addons:
 env:
   - TEST_SUITE=unit
   - TEST_SUITE=integration
+  - TEST_SUITE=coverage
+
+before_install:
+  - ci/install_lcov.sh
+  - gem install coveralls-lcov
+  - export PATH=$PWD/usr/bin/:$PATH
+  - ln -s $(which gcov-5) usr/bin/gcov
 
 script: ci/script.sh
+
+after_success: ci/upload_coverage.sh
 
 notifications:
   email: false
