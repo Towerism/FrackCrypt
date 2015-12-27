@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.0.2 FATAL_ERROR)
 
+project(frackcrypt)
+
 option(FRACKCRYPT_TEST "Enable testing for FrackCrypt" OFF)
 option(FRACKCRYPT_TEST_UNIT "Enable unit testing (only if testing is enabled)" ON)
 option(FRACKCRYPT_TEST_INTEGRATION "Enable integration testing (only if testing is enabled)" ON)
