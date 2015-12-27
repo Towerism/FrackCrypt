@@ -26,7 +26,8 @@ $ cmake -DFRACKCRYPT_TEST=ON -DFRACKCRYPT_TEST_INTEGRATION=OFF ..
 $ cmake -DFRACKCRYPT_TEST=ON -DFRACKCRYPT_TEST_UNIT=OFF ..
 #+END_SRC
 Internally, cmake uses ctest for testing. If you would like to see
-individual test case results, you can call ctest directly:
+individual test case results, you can pass verbose flags to ctest 
+like so:
 #+BEGIN_SRC
-$ ctest -VV
+$ make test ARGS=-VV
 #+END_SRC
