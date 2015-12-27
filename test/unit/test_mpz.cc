@@ -50,9 +50,9 @@ TEST_F(MPZExporter, ExportSeveralBytes) {
 }
 
 TEST_F(MPZImporter, ImportByte) {
-  import_mpz(z, "\40");
+  import_mpz(z, "\x40");
 
-  EXPECT_EQ(32, mpz_get_ui(z));
+  EXPECT_EQ(64, mpz_get_ui(z));
 }
 
 TEST_F(MPZImporter, ImportTwoBytes) {
