@@ -1,3 +1,5 @@
 #!/bin/bash
 
-coveralls-lcov build/coverage/coverage.info.cleaned
+set -ev
+
+coveralls -E "(/usr/.*)|(.*build/.*)|(.*test/.*)(\.cpp)|(\.cc)" -t "$REPO_TOKEN"

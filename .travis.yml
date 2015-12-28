@@ -2,29 +2,28 @@ language: cpp
 addons:
   apt:
     sources:
-      - george-edison55-precise-backports # CMake 3.2
-      - ubuntu-toolchain-r-test
+    - george-edison55-precise-backports
+    - ubuntu-toolchain-r-test
     packages:
-      - cmake-data
-      - cmake
-      - gcc-5
-      - g++-5
-      - libgmp-dev
-
+    - cmake-data
+    - cmake
+    - gcc-5
+    - g++-5
+    - libgmp-dev
 env:
-  - TEST_SUITE=unit
-  - TEST_SUITE=integration
-  - TEST_SUITE=coverage
-
+- TEST_SUITE=unit
+- TEST_SUITE=integration
+- TEST_SUITE=coverage
 before_install:
-  - ci/install_lcov.sh
-  - gem install coveralls-lcov
-  - export PATH=$PWD/usr/bin/:$PATH
-  - ln -s $(which gcov-5) usr/bin/gcov
-
+- ci/install_lcov.sh
+- gem install coveralls-lcov
+- export PATH=$PWD/usr/bin/:$PATH
+- ln -s $(which gcov-5) usr/bin/gcov
+- pip install --user --upgrade ndg-httpsclient
+- pip install --user cpp-coveralls
 script: ci/script.sh
-
 after_success: ci/upload_coverage.sh
-
 notifications:
   email: false
+dd: # REPO_TOKEN=
+  secure: C3Mz1hdU5C3+iNdq0WJPKHsTT4O5+wkQYLP0DXkzzuz3RAdgDEyv7U03jq50h0k2EQu1WgN9lRuKn3K7j6Yr4F6J1JxWlL9KjyIx5E+ikcUH/Km8WeKR2lR1KBn5SX/X6BiHhLGzMAOzeuthmnE27iRMqjQeKE6otdcyszyoJpu2Bjv3yV2cSYD7Y2RGuJXeGP/wfKxd768dle/Au5EzeH98UNUJJxUjogflrhjP1zdBVZrptHTQmJom1WOQN8j+pTii5I5U4hfDUs0OfVc7D/38HuCSB8qwc6xtjtZh381DATgYNdsUutQMRtkb4Ic+kRwIfRPJqC4BxhaRGv5IkH3ZAqiu13PIUOpce2DMCF4q61D+HXq48aHxHBUqAZVQkVU6/h/HpAXAXXbkeMTXz2qvZWgL6QFpw+EpSTvUK969TnCUB8j1WU+3W3KICLGAGLoXjJ3naRHN5STKrqSOKi2aKgjy7Q8PH4N+MHcHYxBwbtt+cISndmF569JcaFwVIM5MuDdLWPAsGRv9NUVIC6Zojps4BjPKMGV/ZaqGpwtzSbRFYb7iQhpr9jvHesVnT7u7kinumCC4qkeaYQXyJYdsNA36p5unV3KJdrFreH3T0Yhv6SYNOf1Lmx3pUnSTYS/8jOPh3DlYSxuggU3tzXcy25ljgfOScnCfy+UEnnE=
