@@ -1,7 +1,7 @@
 #ifndef TOOLS_BASE64_DECODER_H
 #define TOOLS_BASE64_DECODER_H
 
-#include "agent.hh"
+#include "base64.hh"
 
 #include <array>
 #include <string>
@@ -11,7 +11,7 @@ namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
-class Decoder : protected Agent {
+class Decoder : protected Base64 {
 public:
   Decoder();
 

@@ -32,7 +32,7 @@ void Decoder::decode_chunk(std::string chunk) {
 
 void Decoder::recover_bytes() {
   for (size_t i = 0; i < bytes.size(); ++i)
-    if (working_chunk[i + 1] != '=')
+    if (working_chunk[i + 1] != pad_byte)
       recover_and_append_byte(i);
 }
 

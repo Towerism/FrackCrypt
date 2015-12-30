@@ -9,7 +9,7 @@ namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
-class Agent {
+class Base64 {
 public:
   virtual std::string operator()(std::string input) = 0;
 
@@ -18,6 +18,7 @@ protected:
   void chunkify(std::string input, unsigned chunk_size);
 
   static const std::string base64_chars;
+  static const char pad_byte;
 
   std::ostringstream output;
   std::vector<std::string> chunks;

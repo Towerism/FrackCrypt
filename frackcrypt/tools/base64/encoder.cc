@@ -48,7 +48,7 @@ void Encoder::append_code(size_t i) {
 void Encoder::add_padding() {
   std::string last_chunk = chunks.back();
   size_t padding_amount = 3 - last_chunk.length();
-  std::string padding(padding_amount, '=');
+  std::string padding(padding_amount, pad_byte);
   output << padding;
 }
 
