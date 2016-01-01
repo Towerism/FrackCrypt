@@ -41,6 +41,10 @@ void Encoder::calculate_code(size_t i) {
   codes[i] &= 0x3F;
 }
 
+const uint8_t Encoder::high_indeces[4] = { 0, 0, 1, 2 };
+const uint8_t Encoder::low_indeces[4] = { 0, 1, 2, 2 };
+const uint8_t Encoder::shifters[4] = { 2, 4, 6, 0 };
+
 void Encoder::append_code(size_t i) {
   output << base64_chars[codes[i]];
 }

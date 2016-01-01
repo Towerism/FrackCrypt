@@ -25,10 +25,11 @@ private:
   void append_code(size_t i);
   void add_padding();
 
+  static const uint8_t high_indeces[4];
+  static const uint8_t low_indeces[4];
+  static const uint8_t shifters[4];
+
   std::array<uint8_t, 4> codes;
-  const uint8_t shifters[4] = { 2, 4, 6, 0 };
-  const uint8_t high_indeces[4] = { 0, 0, 1, 2 };
-  const uint8_t low_indeces[4] = { 0, 1, 2, 2 };
 };
 
 }
