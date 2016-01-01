@@ -37,11 +37,11 @@ TEST_F(ConvertBetweenMPZAndBase64, ConvertSeveralBytesToBase64) {
 TEST_F(ConvertBetweenMPZAndBase64, ConvertOneByteToMPZ) {
   to_mpz(z, "IA==");
 
-  EXPECT_EQ(32, mpz_get_ui(z));
+  EXPECT_EQ(32ul, mpz_get_ui(z));
 }
 
 TEST_F(ConvertBetweenMPZAndBase64, ConvertSeveralBytesToMPZ) {
   to_mpz(z, "QEBAQA==");
 
-  EXPECT_EQ(1077952576, mpz_get_ui(z));
+  EXPECT_EQ(1077952576ul, mpz_get_ui(z));
 }

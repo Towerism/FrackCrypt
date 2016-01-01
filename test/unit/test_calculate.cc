@@ -28,5 +28,5 @@ TEST_F(Calculate, GCD) {
 
   gcd(c, a, b);
 
-  EXPECT_EQ(2, mpz_get_ui(c));
+  EXPECT_EQ(2ul, mpz_get_ui(c));
 }

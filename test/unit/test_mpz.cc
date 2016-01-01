@@ -50,17 +50,17 @@ TEST_F(MPZExporter, ExportSeveralBytes) {
 TEST_F(MPZImporter, ImportByte) {
   import_mpz(z, "\x40");
 
-  EXPECT_EQ(64, mpz_get_ui(z));
+  EXPECT_EQ(64ul, mpz_get_ui(z));
 }
 
 TEST_F(MPZImporter, ImportTwoBytes) {
   import_mpz(z, "\x40\x40");
 
-  EXPECT_EQ(16448, mpz_get_ui(z));
+  EXPECT_EQ(16448ul, mpz_get_ui(z));
 }
 
 TEST_F(MPZImporter, ImportSeveralBytes) {
   import_mpz(z, "\x40\x40\x40\x40");
 
-  EXPECT_EQ(1077952576, mpz_get_ui(z));
+  EXPECT_EQ(1077952576ul, mpz_get_ui(z));
 }
