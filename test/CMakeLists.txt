@@ -16,8 +16,7 @@ if (${FRACKCRYPT_TEST_INTEGRATION})
 
   add_executable(frackcrypt_test_integration $<TARGET_OBJECTS:integration>)
 
-  set(TEST_INTEGRATION_LIBS ${TEST_LIBS})
-  target_link_libraries(frackcrypt_test_integration ${TEST_INTEGRATION_LIBS})
+  target_link_libraries(frackcrypt_test_integration ${TEST_LIBS})
 endif()
 
 if (FRACKCRYPT_COVERAGE AND NOT WIN32 AND NOT APPLE)
