@@ -1,4 +1,7 @@
-set(MPZ_SOURCES exporter.cc importer.cc)
+set(MPZ_SOURCES
+  exporter.cc
+  importer.cc
+  )
 add_library(mpz ${MPZ_SOURCES})
 
 set(MPZ_LIBS gmp)

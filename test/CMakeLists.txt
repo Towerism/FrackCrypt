@@ -1,7 +1,15 @@
 include(gtest)
 
-set(LIBS_TO_TEST tools)
-set(TEST_LIBS gmp pthread ${LIBS_TO_TEST} gtest gtest_main)
+set(LIBS_TO_TEST
+  tools
+  )
+set(TEST_LIBS
+  ${LIBS_TO_TEST}
+  gmp
+  pthread
+  gtest
+  gtest_main
+  )
 
 if (${FRACKCRYPT_TEST_UNIT})
   add_subdirectory(unit)
