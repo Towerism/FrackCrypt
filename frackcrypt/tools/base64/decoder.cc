@@ -4,8 +4,11 @@ namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
+std::unordered_map<char, uint8_t> Decoder::base64_index_hash;
+
 Decoder::Decoder() {
-  fill_base64_index_hash();
+  if (base64_index_hash.empty())
+    fill_base64_index_hash();
 }
 
 void Decoder::fill_base64_index_hash() {

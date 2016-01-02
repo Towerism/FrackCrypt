@@ -26,7 +26,8 @@ private:
   void recover_byte(size_t i);
   void append_byte(size_t i);
 
-  std::unordered_map<char, uint8_t> base64_index_hash;
+  static std::unordered_map<char, uint8_t> base64_index_hash;
+
   std::array<char, 3> bytes;
   const uint8_t shifters[3] = { 2, 4, 6 };
 };
