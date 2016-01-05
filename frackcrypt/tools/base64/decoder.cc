@@ -30,13 +30,17 @@ void Decoder::decode_chunks() {
 
 void Decoder::decode_chunk(std::string chunk) {
   working_chunk = chunk;
-  recover_bytes();
+  recover_and_append_bytes();
 }
 
-void Decoder::recover_bytes() {
+void Decoder::recover_and_append_bytes() {
   for (size_t i = 0; i < bytes.size(); ++i)
-    if (working_chunk[i + 1] != pad_byte)
-      recover_and_append_byte(i);
+    recover_and_append_byte_if(i, working_chunk[i + 1] != pad_byte);
+}
+
+void Decoder::recover_and_append_byte_if(size_t i, bool condition) {
+  if (condition)
+    recover_and_append_byte(i);
 }
 
 void Decoder::recover_and_append_byte(size_t i) {

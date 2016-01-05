@@ -21,7 +21,8 @@ private:
   void fill_base64_index_hash();
   void decode_chunks();
   void decode_chunk(std::string chunk);
-  void recover_bytes();
+  void recover_and_append_bytes();
+  void recover_and_append_byte_if(size_t i, bool condition);
   void recover_and_append_byte(size_t i);
   void recover_byte(size_t i);
   void append_byte(size_t i);
