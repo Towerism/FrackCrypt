@@ -11,7 +11,7 @@ namespace FrackCrypt {
 namespace Tools {
 namespace Base64 {
 
-class Decoder : protected Base64 {
+class Decoder : private Base64 {
 public:
   Decoder();
 

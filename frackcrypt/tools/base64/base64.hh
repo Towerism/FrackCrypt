@@ -14,6 +14,8 @@ public:
   virtual std::string operator()(std::string input) = 0;
 
 protected:
+  ~Base64() = default;
+
   void reset();
   void chunkify(std::string input, unsigned chunk_size);
 
