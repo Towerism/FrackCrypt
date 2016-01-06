@@ -10,14 +10,6 @@ set(TEST_LIBS
   gtest_main
   )
 
-if (${THREADS_FOUND})
-  set(TEST_LIBS
-    ${TEST_LIBS}
-    Threads::Threads
-    )
-endif()
-
-
 if (${FRACKCRYPT_TEST_UNIT})
   add_subdirectory(unit)
 
