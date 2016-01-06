@@ -25,10 +25,10 @@ if (${FRACKCRYPT_TEST})
   add_subdirectory(test)
 
   if (${FRACKCRYPT_TEST_UNIT})
-    add_test(NAME unit COMMAND $<TARGET_FILE:frackcrypt_test_unit> --gtest_color=yes)
+    add_test(NAME unit COMMAND $<TARGET_FILE:frackcrypt_test_unit>)
   endif()
 
   if (${FRACKCRYPT_TEST_INTEGRATION})
-    add_test(NAME integration COMMAND $<TARGET_FILE:frackcrypt_test_integration> --gtest_color=yes)
+    add_test(NAME integration COMMAND $<TARGET_FILE:frackcrypt_test_integration>)
   endif()
 endif()
