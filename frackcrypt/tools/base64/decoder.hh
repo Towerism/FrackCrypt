@@ -30,7 +30,7 @@ private:
   static std::unordered_map<char, uint8_t> base64_index_hash;
 
   std::array<char, 3> bytes;
-  const uint8_t shifters[3] = { 2, 4, 6 };
+  static const uint8_t shifters[3];
 };
 
 }
