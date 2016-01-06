@@ -26,7 +26,7 @@ void Encoder::encode_chunk(std::string chunk) {
 
 void Encoder::calculate_and_append_codes() {
   for (size_t i = 0; i < codes.size(); ++i)
-    if (working_chunk.length() > i - 1 || i < 2 )
+    if (working_chunk.length() + 1 > i)
       calculate_and_append_code(i);
 }
 

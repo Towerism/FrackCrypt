@@ -48,12 +48,12 @@ void Decoder::recover_and_append_byte(size_t i) {
   append_byte(i);
 }
 
-const uint8_t Decoder::shifters[3] = { 2, 4, 6 };
-
 void Decoder::recover_byte(size_t i) {
   bytes[i] = base64_index_hash[working_chunk[i]] << shifters[i];
   bytes[i] |= base64_index_hash[working_chunk[i + 1]] >> (6 - shifters[i]);
 }
+
+const uint8_t Decoder::shifters[3] = { 2, 4, 6 };
 
 void Decoder::append_byte(size_t i) {
   output << bytes[i];
