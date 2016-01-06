@@ -5,7 +5,7 @@ set(LIBS_TO_TEST
   )
 set(TEST_LIBS
   ${LIBS_TO_TEST}
-  gmp
+  ${GMP_LIBRARIES}
   pthread
   gtest
   gtest_main

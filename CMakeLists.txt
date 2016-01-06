@@ -16,6 +16,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 set(CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
 
+find_package(GMP REQUIRED)
+include_directories(${GMP_INCLUDE_DIR})
+
 include_directories(.)
 
 add_subdirectory(frackcrypt)
