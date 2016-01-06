@@ -6,10 +6,17 @@ set(LIBS_TO_TEST
 set(TEST_LIBS
   ${LIBS_TO_TEST}
   ${GMP_LIBRARIES}
-  pthread
   gtest
   gtest_main
   )
+
+if (${THREADS_FOUND})
+  set(TEST_LIBS
+    ${TEST_LIBS}
+    Threads::Threads
+    )
+endif()
+
 
 if (${FRACKCRYPT_TEST_UNIT})
   add_subdirectory(unit)
