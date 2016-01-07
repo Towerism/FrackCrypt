@@ -2,7 +2,7 @@
 set -ev
 
 TEST_CONFIG=
-TEST_COMMAND="ctest -VV"
+TEST_COMMAND="make test ARGS=-VV"
 
 if [ "${TEST_SUITE}" == "unit" ]; then
   TEST_CONFIG=-DFRACKCRYPT_TEST_INTEGRATION=OFF
@@ -16,5 +16,5 @@ fi
 export CXX=g++-5
 mkdir -p build && cd build
 cmake -DFRACKCRYPT_TEST=ON ${TEST_CONFIG} ..
-make
+make build-tests
 ${TEST_COMMAND}

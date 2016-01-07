@@ -25,13 +25,16 @@ add_subdirectory(frackcrypt)
 
 if (${FRACKCRYPT_TEST})
   enable_testing()
-  add_subdirectory(test)
+  add_subdirectory(test EXCLUDE_FROM_ALL)
+  add_custom_target(build-tests)
 
   if (${FRACKCRYPT_TEST_UNIT})
     add_test(NAME unit COMMAND $<TARGET_FILE:frackcrypt_test_unit>)
+    add_dependencies(build-tests frackcrypt_test_unit)
   endif()
 
   if (${FRACKCRYPT_TEST_INTEGRATION})
     add_test(NAME integration COMMAND $<TARGET_FILE:frackcrypt_test_integration>)
+    add_dependencies(build-tests frackcrypt_test_integration)
   endif()
 endif()
