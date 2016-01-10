@@ -18,16 +18,15 @@ $ cmake -DFRACKCRYPT_TEST=ON ..
 $ make build-tests
 $ make test
 #+END_SRC
-By default, both unit and integration tests are executed. You can 
-change this behavior by turning them off individually during 
-configuration. Take these two configuration commands for example:
+By default, both unit and integration tests are executed. You can change this
+behavior by turning them off individually during configuration. Take these two
+configuration commands for example:
 #+BEGIN_SRC
 $ cmake -DFRACKCRYPT_TEST=ON -DFRACKCRYPT_TEST_INTEGRATION=OFF ..
 $ cmake -DFRACKCRYPT_TEST=ON -DFRACKCRYPT_TEST_UNIT=OFF ..
 #+END_SRC
-Internally, cmake uses ctest for testing. If you would like to see
-individual test case results, you can pass verbose flags to ctest 
-like so:
+Internally, cmake uses ctest for testing. If you would like to see individual
+test case results, you can pass verbose flags to ctest like so:
 #+BEGIN_SRC
 $ make test ARGS=-VV
 #+END_SRC
