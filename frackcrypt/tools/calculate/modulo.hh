@@ -6,8 +6,7 @@
 //  file LICENSE in the root directory or visit
 //  www.gnu.org/licenses/gpl-3.0.en.html for license terms.
 
-#ifndef TOOLS_CALCULATE_MODULO_H
-#define TOOLS_CALCULATE_MODULO_H
+#pragma once
 
 #include <cstddef>
 #include <gmp.h>
@@ -27,4 +26,3 @@ public:
 }
 }
 
-#endif /* TOOLS_CALCULATE_MODULO_H */

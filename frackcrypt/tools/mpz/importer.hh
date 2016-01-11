@@ -6,8 +6,7 @@
 //  file LICENSE in the root directory or visit
 //  www.gnu.org/licenses/gpl-3.0.en.html for license terms.
 
-#ifndef TOOLS_MPZ_IMPORTER_H
-#define TOOLS_MPZ_IMPORTER_H
+#pragma once
 
 #include <cstddef>
 #include <gmp.h>
@@ -28,4 +27,3 @@ public:
 }
 }
 
-#endif /* TOOLS_MPZ_IMPORTER_H */

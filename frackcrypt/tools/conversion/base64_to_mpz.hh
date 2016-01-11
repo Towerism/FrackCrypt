@@ -6,8 +6,7 @@
 //  file LICENSE in the root directory or visit
 //  www.gnu.org/licenses/gpl-3.0.en.html for license terms.
 
-#ifndef TOOLS_CONVERSON_BASE64_TO_MPZ_H
-#define TOOLS_CONVERSON_BASE64_TO_MPZ_H
+#pragma once
 
 #include <frackcrypt/tools/base64/decoder.hh>
 #include <frackcrypt/tools/mpz/importer.hh>
@@ -35,4 +34,3 @@ private:
 }
 }
 
-#endif /* TOOLS_CONVERSON_BASE64_TO_MPZ_H */

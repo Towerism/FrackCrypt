@@ -6,8 +6,7 @@
 //  file LICENSE in the root directory or visit
 //  www.gnu.org/licenses/gpl-3.0.en.html for license terms.
 
-#ifndef TOOLS_BASE64_AGENT_H
-#define TOOLS_BASE64_AGENT_H
+#pragma once
 
 #include <sstream>
 #include <string>
@@ -39,4 +38,3 @@ protected:
 }
 }
 
-#endif /* TOOLS_BASE64_AGENT_H */

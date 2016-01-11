@@ -6,8 +6,7 @@
 //  file LICENSE in the root directory or visit
 //  www.gnu.org/licenses/gpl-3.0.en.html for license terms.
 
-#ifndef TOOLS_BASE64_DECODER_H
-#define TOOLS_BASE64_DECODER_H
+#pragma once
 
 #include "base64.hh"
 
@@ -45,4 +44,3 @@ private:
 }
 }
 
-#endif /* TOOLS_BASE64_DECODER_H */
