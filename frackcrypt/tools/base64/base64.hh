@@ -39,4 +39,4 @@ protected:
 }
 }
 
-#endif
+#endif /* TOOLS_BASE64_AGENT_H */

@@ -44,4 +44,4 @@ private:
 }
 }
 
-#endif
+#endif /* TOOLS_BASE64_ENCODER_H */

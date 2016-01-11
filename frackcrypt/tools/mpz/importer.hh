@@ -28,4 +28,4 @@ public:
 }
 }
 
-#endif
+#endif /* TOOLS_MPZ_IMPORTER_H */

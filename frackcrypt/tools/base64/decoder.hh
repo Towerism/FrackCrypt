@@ -45,4 +45,4 @@ private:
 }
 }
 
-#endif
+#endif /* TOOLS_BASE64_DECODER_H */

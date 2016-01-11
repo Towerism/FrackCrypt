@@ -27,4 +27,4 @@ public:
 }
 }
 
-#endif
+#endif /* TOOLS_CALCULATE_GCD_H */
