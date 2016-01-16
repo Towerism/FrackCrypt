@@ -1,3 +1,5 @@
 #!/bin/bash
 
-coveralls-lcov build/coverage/coverage.info.cleaned
+if [ "${TEST_SUITE}" == "coverage" ]; then
+  coveralls-lcov build/coverage/coverage.info.cleaned
+fi
